@@ -3,9 +3,11 @@ def main():
     text = get_book_text(book_path)
     word_count = count_words(text)
     charac_count = count_characters(text)
+    filtrar = filtro(text)
     print(f"Word count: {word_count}")
     print(f"Character counts: {charac_count}")
-    print(text)
+    print(f"alphabet word counts: {filtrar}")
+    #print(text)
     
 
 def get_book_text(path):
@@ -25,5 +27,15 @@ def count_characters(text):
             char_count[i] = char_count[i] + 1
         
     return char_count
-    
+
+def filtro(text):
+    char_alfa = {}
+    for c in text.lower():
+        if c not in char_alfa and c.isalpha():
+            char_alfa[c] = 1
+        elif c.isalpha():
+            char_alfa[c] = char_alfa[c] + 1
+
+    return char_alfa
+
 main()
